@@ -1,0 +1,72 @@
+using System;
+
+namespace pilha
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<string> pilha = new Stack<string>();
+            Console.WriteLine("Informe uma expressão:");
+            string expressao = Console.ReadLine();
+            double calculo = 0;
+            for (int i = 0; i < expressao.Length; i++)
+            {
+                if (expressao[i] == '+')
+                {
+                    double numeroA = double.Parse(pilha.Peek());
+                    pilha.Pop();
+                    double numeroB = double.Parse(pilha.Peek());
+                    pilha.Pop();
+                    double num = (double)Char.GetNumericValue(expressao[i]);
+                    calculo = numeroB + numeroA;
+                    pilha.Push(calculo.ToString());
+
+
+                }
+                else if (expressao[i] == '-')
+                {
+                    double numeroA = double.Parse(pilha.Peek());
+                    pilha.Pop();
+                    double numeroB = double.Parse(pilha.Peek());
+                    pilha.Pop();
+                    double num = (double)Char.GetNumericValue(expressao[i]);
+                    calculo = numeroB - numeroA;
+                    pilha.Push(calculo.ToString());
+
+                }
+                else if (expressao[i] == '*')
+                {
+                    double numeroA = double.Parse(pilha.Peek());
+                    pilha.Pop();
+                    double numeroB = double.Parse(pilha.Peek());
+                    pilha.Pop();
+                    double num = (double)Char.GetNumericValue(expressao[i]);
+                    calculo = numeroB * numeroA;
+                    pilha.Push(calculo.ToString());
+
+                }
+
+                else if (expressao[i] == '/')
+                {
+                    double numeroA = double.Parse(pilha.Peek());
+                    pilha.Pop();
+                    double numeroB = double.Parse(pilha.Peek());
+                    pilha.Pop();
+                    double num = (double)Char.GetNumericValue(expressao[i]);
+                    calculo = numeroB / numeroA;
+                    pilha.Push(calculo.ToString());
+                }
+                else 
+                {
+                    string unidade = expressao[i].ToString();                    
+                    pilha.Push(unidade);                   
+                }
+                
+            }
+            Console.WriteLine(calculo);
+
+         
+        }
+    }
+}
